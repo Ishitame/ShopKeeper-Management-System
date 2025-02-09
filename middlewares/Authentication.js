@@ -8,21 +8,21 @@ exports.authMiddleware = async (req, res, next) => {
     
         const token = req.cookies.token;
         if (!token) {
-            return res.send("Not logged in");
+            return res.status(401).json({ error: "Not logged in" });
         }
 
         jwt.verify(token, secretKey, async (err, decoded) => {
             if (err) {
-                return res.send("Invalid Token");
+                return res.status(401).json({ error: "Invalid token" });
             }
 
             const { id ,email} = decoded;
             const user = await shopkeeperModel.findById(id);
 
             if (!user) {
-                return res.send("Log In");
+                return res.status(401).json({ error: "Please log in" });
             }
-
+             
             req.user = user;
             next();
         });

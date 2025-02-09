@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-    shopkeeperId: { type: mongoose.Schema.Types.ObjectId, ref: "Shopkeeper" },
+    // shopkeeperId: { type: mongoose.Schema.Types.ObjectId, ref: "Shopkeeper" },
     name: { type: String},
     brand: { type: String },
-    costPrice: { type: Number }, 
-    sellingPrice: { type: Number}, 
-    stock: { type: Number, required: true, default: 0 }, 
+    category: { type: String },
+   cp: { type: Number }, 
+    sp: { type: Number}, 
+    stock: { type: Number, default: 0 }, 
     totalInvestment: { type: Number, default: 0 }, 
     discount: { type: Number, default: 0 }
     

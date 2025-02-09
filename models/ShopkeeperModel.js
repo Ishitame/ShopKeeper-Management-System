@@ -7,6 +7,9 @@ const shopkeeperSchema = new mongoose.Schema({
     phone: { type: String },
     shopname: { type: String},
     location: { type: String},
+    products:{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Product"}
 },{timestamps:true});
 
 
